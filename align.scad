@@ -21,13 +21,17 @@ w = 6; // window radius
 n = 6; // number of window columns
 m = 5; // number of window rows
 v = w+10; // window start displacement
+W = 80/2;  // radius of "base adhesion" extension
+a = 0.2; // thickness of "base adhesion" extension
 
 module tapalign() {
   difference() {
     union() {
-      translate([0,0,S])
-        cylinder(r=B,h=h,$fn=2*sm);
-      cylinder(r1=b,r2=B,h=S+eps,$fn=2*sm);
+      translate([0,0,S-tol])
+        cylinder(r=B+tol,h=h+tol,$fn=2*sm);
+      cylinder(r1=b,r2=B,h=S+tol,$fn=2*sm);
+      translate([0,0,L-a])
+        cylinder(r=W,h=a); // base adhesion layer
     }
     translate([0,0,-eps])
       cylinder(r=r+tol,h=L+2*eps,$fn=4*sm);
