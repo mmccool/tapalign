@@ -1,4 +1,4 @@
-# tapalign
+# Tube Tap Alignment Sleeve
 Sleeve for tube tap to make alignment easier.
 When connecting two steel tubes end-to-end,
 you may want to tap the interiors of both tubes to connect them with a threaded shaft (headless bolt).
