@@ -3,9 +3,9 @@
 // All dimensions in mm
 
 eps = 0.01; // numerical tolerance for CSG
-tol = 0.3;  // amount by which printer "spreads"
-clear = 0.5;  // looser tolerance for part that need clearance
-sm = 30;
+tol = 0.1;  // amount by which printer "spreads"
+clear = 0.3;  // looser tolerance for parts that need clearance
+sm = 50;
 
 R = 25.5/2;  // outer radius of tube to be tapped
 r = 17.87/2; // shaft radius of tap
@@ -16,17 +16,24 @@ S = H + E; // total length of sleeve
 L = h + S; // total length
 t = 2; // min wall thickness
 b = R + t; // min outer radius
-B = 25; // max radius of base
+B = R + 2*t; // max radius of base
 w = 6; // window radius
 n = 6; // number of window columns
 m = 5; // number of window rows
 v = w+10; // window start displacement
-W = 80/2;  // radius of "base adhesion" extension
+W = 100/2;  // radius of "base adhesion" extension
 a = 0.21; // thickness of "base adhesion" extension
+C = 25;
+Ch = (C-B);
+Ch2 = 5;
 
 module tapalign() {
   difference() {
     union() {
+      translate([0,0,L-Ch2-tol])
+        cylinder(r=C,h=Ch2+tol,$fn=2*sm);
+      translate([0,0,L-Ch-Ch2])
+        cylinder(r1=B+tol,r2=C,h=Ch,$fn=2*sm);
       translate([0,0,S-tol])
         cylinder(r=B+tol,h=h+tol,$fn=2*sm);
       cylinder(r1=b,r2=B,h=S+tol,$fn=2*sm);
