@@ -13,3 +13,5 @@ The sleeves should be 3D printed just loose enough that they can rotate around t
 tube but tight enough to keep good alignment.
 The conical shape is both for strength and to make 3D printing more stable (due to the larger base)
 and to provide an extra alignment surface against the tap wrench.
+
+![Perspective Rendering of Tap Alignment Sleeve](pers.png)
